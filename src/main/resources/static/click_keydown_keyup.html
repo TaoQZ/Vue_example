@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" @click="buttonClick" value="点击触发事件"><br/>
+<!--        键盘按下-->
+        <input type="text" @keydown="show($event)">
+<!--        鼠标移入移出-->
+        <div style="width: 100px;height: 100px;background-color: blue;border: 5px;border-color: red" @mouseover="inDiv" @mouseout="outDiv"></div>
+
+    </div>
+   
+    <script>
+
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                show(e){
+                    console.log(e.keyCode)
+                },
+                inDiv(){
+                    console.log("鼠标移入")
+                },
+                outDiv(){
+                    console.log("鼠标移出")
+                },
+                buttonClick(){
+                    console.log('点击事件')
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

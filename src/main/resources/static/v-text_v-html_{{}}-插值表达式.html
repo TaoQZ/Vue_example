@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+<!--        在网络不畅通或者网络较慢的情况下会出现闪烁问题-->
+        {{msg}}</br>
+<!--        解决上面插值表达式的闪烁问题-->
+        <span v-text="msg"></span></br>
+<!--        如果数据时html代码 可以将数据渲染到页面-->
+        <span v-html="msg"></span>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'<font color="#8a2be2">tao</font>'
+            },
+            methods:{
+                show(){
+                    return 10
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

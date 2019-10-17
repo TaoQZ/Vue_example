@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+
+<!--   input文本框   将data中的num绑定到该文本框,双向绑定,修改文本框中的值 对应的在data中的num也会改变,修改data中的数据也会影响页面渲染-->
+        <input type="text" v-model="num"><br/>
+
+<!--    checkbox 多选框  需要用数组接收   -->
+        <div>
+            hobby:{{hobby}}
+        </div>
+        <input type="checkbox" v-model="hobby" value="网球">网球
+        <input type="checkbox" v-model="hobby" value="游泳">游泳
+        <input type="checkbox" v-model="hobby" value="跑步">跑步<br/>
+
+<!--  radio 单选框 用普通字符串接收 -->
+        <div>
+            sex:{{sex}}
+        </div>
+        <input type="radio" value="male" v-model="sex">男
+        <input type="radio" value="female" v-model="sex">女<br/>
+<!--   只有一个选择框时使用布尔值接收     -->
+        单复选框：<input type="checkbox" id="checkbox" v-model="checked">  <label for="checkbox">{{ checked }}</label><br/>
+
+<!--   textarea 文本域  用普通字符串接收   -->
+        <textarea  v-model="num"  cols="30" rows="10"></textarea><br/>
+
+<!--    select 下拉列表 单选对应字符串，多选对应也是数组   -->
+        下拉列表<br/>
+        <select v-model="province">
+            <option disabled value="">请选择</option>
+            <option v-for="item in items" :value="item">{{item}}</option>
+        </select>
+        {{province}}
+    </div>
+
+    <script>
+        // 注意: 在data中拿到的值是标签的value值
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            num:1,
+            hobby:[],
+            checked: true,
+            sex:'male',
+            items:['河北','天津','北京'],
+            province:''
+        }
+    })
+</script>
+</body>
+</html>

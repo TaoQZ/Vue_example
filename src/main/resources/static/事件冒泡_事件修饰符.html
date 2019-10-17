@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+
+<!--    点击按钮会同时出发外层div的点击事件 并且是先触发button 后触发div -->
+        <div style="width: 100px;height: 100px;background-color: red" @click="divClick">
+            <input type="button" @click="buttonClick" value="点击">
+        </div>
+
+<!--    .stop 阻止冒泡 点击按钮时不会触发外层div的点击事件 -->
+        <div style="width: 100px;height: 100px;background-color: black" @click="divClick">
+            <input type="button" @click.stop="buttonClick" value="点击">
+        </div>
+
+<!--    .prevent 阻止事件的默认事件   -->
+        <a href="http://www.baidu.com" @click.prevent="jump">百度</a><br/>
+
+<!--    判断是否是Enter键 可以用vue提供的预设好的也可以使用其对应的ascll码    -->
+        <input type="button" @keydown.13="isEnter($event)" value="按Enter键触发">
+        <input type="button" @keydown.Enter="isEnter($event)" value="按Enter键触发">
+
+<!--    阻止表单提交-->
+        <form @submit.prevent  action="http://www.baidu.com">
+              <input type="submit" value="提交">
+        </form>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                divClick(){
+                    console.log('div')
+                },
+                buttonClick(e){
+                    // js中冒泡的解决方案
+                    // 阻止事件的传播行为
+                    // e.stopPropagation();
+                    console.log('button')
+                },
+                jump:()=>{
+                    console.log('点击a标签后没有跳转网页')
+                },
+                isEnter(e){
+                    console.log(e.keyCode)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

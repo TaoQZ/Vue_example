@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+<!--     用来更新数据   -->
+        <input type="button" value="Button" @click="msg='-'">
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'+'
+            },
+            methods:{
+                show(){
+                    console.log('我是show方法')
+                }
+            },
+            // 初始化前 数据和方法均为未初始化
+            beforeCreate(){
+                // undefined
+                console.log(this.msg)
+                // this.show is not a function
+                this.show()
+                console.log('=======================================')
+            },
+            // 初始化完成 数据和方法已初始化完成
+            created(){
+                // 全部正常打印
+                console.log(this.msg)
+                this.show()
+                console.log('=======================================')
+            },
+            // 双向绑定(挂载)前,表示模板已经编译完成,但是未将模板渲染到页面中
+            beforeMount(){
+                // {{msg}} 未渲染状态,只是原始字符串
+                console.log(document.getElementById('app').innerText)
+                console.log('=======================================')
+            },
+            // 双向绑定(挂载)后,将数据渲染到页面
+            mounted(){
+                // +
+                console.log(document.getElementById('app').innerText)
+                console.log('=======================================')
+            },
+            // 更新钩子函数需要改变数据才会触发
+            // 更新前 data中的数据已经发生变化 未渲染到页面(页面还没同步)
+            beforeUpdate(){
+                // +
+                console.log("更新前"+this.msg)
+                // -
+                console.log("更新前"+document.getElementById('app').innerText)
+            },
+            // 更新后
+            updated(){
+                // -
+                console.log("更新后"+this.msg)
+                // -
+                console.log("更新后"+document.getElementById('app').innerText)
+            },
+            // 销毁Vue实例
+            beforeDestroy(){
+                console.log('销毁前'+this)
+            },
+            destroyed(){
+                console.log('销毁后'+this)
+            }
+
+        })
+        // 销毁Vue实例
+        vm.$destroy();
+    </script>
+</body>
+</html>
