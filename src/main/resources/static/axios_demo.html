@@ -22,7 +22,7 @@
             },
             methods:{
                 getData(){
-                    axios.get('../data/users.json')
+                    axios.get('./data/users.json')
                         .then( res => {
                             console.log(res)
                             this.users = res.data
