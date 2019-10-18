@@ -9,6 +9,8 @@
 </head>
 <body>
     <div id="app">
+<!--    使用 $或者_ 定义的变量获取数据的方式     -->
+        {{this.$data._tao}}
         <ul>
             <li v-for="user in users">{{user.name}}--{{user.age}}--{{user.sex}}</li>
         </ul>
@@ -18,13 +20,15 @@
         var vm = new Vue({
             el:'#app',
             data:{
-                users:[]
+                users:[],
+                _tao:"zzz"
             },
             methods:{
                 getData(){
                     axios.get('./data/users.json')
                         .then( res => {
                             console.log(res)
+                            console.log(this)
                             this.users = res.data
                         })
                 }
