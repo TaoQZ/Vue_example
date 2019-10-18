@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click="change">
+
+<!--    不符合条件 会直接删除元素   -->
+        <div v-if="flag">
+            flag
+        </div>
+<!--    不符合条件 会在元素上添加style='display: none;'   -->
+        <div v-show="flag">
+            flag
+        </div>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true
+            },
+            methods:{
+                change(){
+                    this.flag = !this.flag
+                }
+            }
+        })
+    </script>
+</body>
+</html>

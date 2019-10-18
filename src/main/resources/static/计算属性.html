@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+<!--    调用在methods中定义的方法 想要获取返回值必须使用()调用   -->
+<!--        {{method_num}}-->
+        {{method_num()}}
+<!--    调用在computed中定义的方法,其会被当做定义属性,本质也是一个方法,方法必须有返回值,,使用时不能使用() -->
+        {{computed_num}}
+<!--        {{computed_num()}}-->
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:''
+            },
+            methods:{
+                method_num(){
+                    return 1+1;
+                }
+            },
+            computed:{
+                computed_num(){
+                    return 2+1;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

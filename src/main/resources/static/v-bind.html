@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+    <style>
+        .red{
+          background-color: red;
+        }
+        .black{
+            background-color: black;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <select v-model="myclass">
+            <option disabled value="">请选择</option>
+            <option v-for="color in colors"  :value="color.clas">{{color.name}}</option>
+        </select>
+        <div :class="myclass" style="width: 100px;height: 100px;border: yellow solid 1px">
+
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                myclass:'',
+                colors:[
+                    {name:'红',clas:'red'},
+                    {name:'黑',clas:'black'},
+                    {name:'绿',clas:'green'}
+                ]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
