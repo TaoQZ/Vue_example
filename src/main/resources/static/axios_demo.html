@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+    <script src="js/axios.js"></script>
+    <!--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="user in users">{{user.name}}--{{user.age}}--{{user.sex}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                users:[]
+            },
+            methods:{
+                getData(){
+                    axios.get('../data/users.json')
+                        .then( res => {
+                            console.log(res)
+                            this.users = res.data
+                        })
+                }
+            },
+            created(){
+                this.getData()
+            }
+        })
+    </script>
+</body>
+</html>
