@@ -1413,7 +1413,7 @@
     function validateComponentName (name) {
         if (!new RegExp(("^[a-zA-Z][\\-\\.0-9_" + (unicodeRegExp.source) + "]*$")).test(name)) {
             warn(
-                'Invalid component name: "' + name + '". Component names ' +
+                'Invalid component name: "' + name + '". component names ' +
                 'should conform to valid custom element name in html5 specification.'
             );
         }
@@ -3196,7 +3196,7 @@
         // reject.
         if (typeof Ctor !== 'function') {
             {
-                warn(("Invalid Component definition: " + (String(Ctor))), context);
+                warn(("Invalid component definition: " + (String(Ctor))), context);
             }
             return
         }
@@ -9637,7 +9637,7 @@
                     });
                 } else {
                     warnOnce(
-                        "Component template should contain exactly one root element. " +
+                        "component template should contain exactly one root element. " +
                         "If you are using v-if on multiple elements, " +
                         "use v-else-if to chain them instead.",
                         { start: element.start }
@@ -9822,7 +9822,7 @@
                     {
                         if (text === template) {
                             warnOnce(
-                                'Component template requires a root element, rather than just text.',
+                                'component template requires a root element, rather than just text.',
                                 { start: start }
                             );
                         } else if ((text = text.trim())) {
