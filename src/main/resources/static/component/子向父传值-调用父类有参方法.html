@@ -7,9 +7,8 @@
 </head>
 <body>
     <div id="app">
-        {{num}}
 <!--    调用父类的change方法 传参通过子类的sonShow方法中的代码传参    -->
-        <couter @zz="change"></couter>
+        <couter :number="num" @zz="change"></couter>
     </div>
 
 
@@ -18,9 +17,11 @@
         Vue.component("couter",{
            template:`
                 <div>
+                    {{number}}
                     <input type="button" value="show" @click="sonShow(100)">
                 </div>
            `,
+            props:['number'],
             methods: {
                sonShow(num){
                    this.$emit("zz",num)
