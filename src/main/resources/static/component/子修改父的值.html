@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue-2.6.10.js"></script>
+</head>
+<body>
+
+    <div id="app">
+<!--    将Vue实例中的num 绑定到子组件中的number    -->
+<!--    使用在模板中自定义的事件  然后去调用父组件中的方法  -->
+        <couter :number="num" @ad="add" @su="sub"></couter>
+    </div>
+
+    <script>
+
+        Vue.component("couter",{
+            // 模板中可以调用自己的方法
+            // 在自己的方法中,有定义了一个事件,自定义名称
+           template:`
+                <div>
+                    {{number}}
+                    <input type="button" value="+" @click="addnumber()">
+                    <input type="button" value="-" @click="subnumber()">
+                </div>
+           `,
+            props:['number'],
+            methods:{
+                addnumber(){
+                    this.$emit("ad")
+                },
+                subnumber(){
+                    this.$emit("su")
+                }
+            }
+
+
+        });
+
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add(){
+                    this.num++
+                },
+                sub(){
+                    this.num--
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

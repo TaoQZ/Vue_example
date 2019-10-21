@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-Component</title>
+    <script src="../js/vue-2.6.10.js"></script>
+    <script>
+        window.open("http://www.baidu.com","window2")
+    </script>
+</head>
+<body>
+
+    <div id="app">
+<!--    使用组件的名称作为标签    -->
+        <tao></tao>
+    </div>
+
+    <script>
+//      Vue组件固定格式 写在vue实例之前
+//      tao :名称
+//      template: 字符串模板 必须有一个根元素
+//      methods: 和之前一样
+        Vue.component('tao',{
+           template:`
+                <div>
+                    Hello Vue-Component
+                </div>
+           `
+        });
+
+
+        var vm = new Vue({
+            el:'#app',
+        })
+    </script>
+
+</body>
+</html>

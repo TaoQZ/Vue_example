@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件复用</title>
+    <script src="../js/vue-2.6.10.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <couter></couter>
+</div>
+
+<script>
+    // 定义局部组件
+    const couter = {
+        template:`
+                <div>
+                    {{num}}
+                    <input type="button" value="+" @click="num++">
+                    <input type="button" value="-" @click="num--">-----------
+
+                    <input type="button" value="+" @click="add()">
+                </div>
+           `,
+        data(){
+            return{
+                num:1
+            }
+        },
+        methods: {
+            add(){
+                this.num++
+            }
+        }
+    };
+
+
+    var vm = new Vue({
+        el:'#app',
+        // 将定义的对象注册为组件
+        components:{
+            // 名字相同可以简写为一个
+            // couter:couter,
+            couter
+        }
+    })
+</script>
+
+</body>
+</html>

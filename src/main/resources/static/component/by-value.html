@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+<!--    这是引用的父类的数据,将父类数据绑定到当前组件的属性上    -->
+        <list :msg="mymsg"></list>
+        <list msg="这是给组件自己的msg"></list>
+        <hr>
+        <list :data="users" msg="hhh"></list>
+    </div>
+
+    <script>
+
+        // 定义组件
+        Vue.component("list",{
+           template:`
+                <div>
+                    <ul>
+                         <li v-for="user in data">{{user.name}}---{{user.age}}---{{user.sex}}</li>
+                    </ul>
+
+                    {{msg}}
+                </div>
+           `,
+            // 给组件定义属性,可以在组件中传值
+            props:[
+                'msg',
+                'data'
+            ]
+
+        });
+
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                mymsg:'czxy',
+                users:
+                    [
+                        {name:'zz',age:18,sex:'男'},
+                        {name:'aa',age:20,sex:'女'}
+                    ]
+            }
+        })
+    </script>
+</body>
+</html>

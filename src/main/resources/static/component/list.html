@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue-2.6.10.js"></script>
+</head>
+
+
+<div id="app">
+<!-- 组件名称中有大写字符 要用-分隔 开头大写除外   -->
+    <user-list></user-list>
+</div>
+
+<script>
+    Vue.component('userList',{
+        template:`
+                <div>
+                   <ul>
+                        <li v-for="user in users">{{user.name}}---{{user.age}}---{{user.sex}}</li>
+                   </ul>
+                </div>
+           `,
+        data(){
+            return{
+                users:[
+                    {name:'zz',age:18,sex:'男'},
+                    {name:'aa',age:20,sex:'女'}
+                ]
+            }
+        }
+    });
+
+
+    var vm = new Vue({
+        el:'#app',
+    })
+</script>
+
+
+</html>

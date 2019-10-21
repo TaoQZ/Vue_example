@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+<!--    调用父类的change方法 传参通过子类的sonShow方法中的代码传参    -->
+        <couter @zz="change"></couter>
+    </div>
+
+
+    <script>
+
+        Vue.component("couter",{
+           template:`
+                <div>
+                    <input type="button" value="show" @click="sonShow(100)">
+                </div>
+           `,
+            methods: {
+               sonShow(num){
+                   this.$emit("zz",num)
+               }
+            }
+
+
+        });
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                change(num){
+                    this.num = num
+                }
+            }
+        })
+    </script>
+</body>
+</html>
